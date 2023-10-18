@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 
 public class Terminal {
 
@@ -25,9 +23,10 @@ public class Terminal {
                     case "last-command" -> System.out.println(lastComand);
                     default -> {
                         if(comandos.contains(">"))
-                            System.out.println(new Command(comandos).toString());
+                            System.out.println(new Command(comandos));
                         else{
-                            redirecciona(comandos);
+                            System.out.println("Escriba la ruta del archivo de salida: ");
+                            redirecciona(comandos,reader.readLine());
                         }
                     }
                 }
@@ -37,11 +36,9 @@ public class Terminal {
             }
         }while(!salir);
     }
-    private static void redirecciona(String comandos) {
-
+    private static void redirecciona(String comandos, String path) {
         String[] a = comandos.split(" ");
-
-        System.out.println(new Command(a,a[a.length-1]).toString());
+        System.out.println(new Command(a,path).toString());
     }
 
 }

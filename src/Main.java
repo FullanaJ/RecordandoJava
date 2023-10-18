@@ -55,6 +55,7 @@ y si es un número primo o no.
 
     public static void main(String[] args) {
 
+        //System.out.println(System.getenv());
         new Terminal().ejecuta();
 
     }
